@@ -40,9 +40,9 @@ public class scanBarcode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_barcode);
         FirebaseApp.initializeApp(this);
-        surfaceView = (SurfaceView) findViewById(R.id.barcodeScan);
-        textView = (TextView) findViewById(R.id.readQR);
-        scan = (Button) findViewById(R.id.btnscan1);
+        surfaceView = findViewById(R.id.barcodeScan);
+        textView = findViewById(R.id.readQR);
+        scan = findViewById(R.id.btnscan1);
 
         scan.setOnClickListener(new View.OnClickListener() {
             @Override

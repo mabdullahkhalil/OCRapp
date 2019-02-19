@@ -5,20 +5,23 @@ package com.something.mabdullahk.ocrapp;
  */
 
 public class workshop {
-    String name;
+    Boolean present;
     String id;
 
-    public workshop(String name, String id) {
-        this.name = name;
+    public workshop(Boolean present, String id) {
+        this.present = present;
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public workshop() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Boolean getpresent() {
+        return present;
+    }
+
+    public void setpresent(Boolean present) {
+        this.present = present;
     }
 
     public String getId() {
