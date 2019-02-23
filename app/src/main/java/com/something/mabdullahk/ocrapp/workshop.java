@@ -5,10 +5,10 @@ package com.something.mabdullahk.ocrapp;
  */
 
 public class workshop {
-    Boolean present;
+    String present;
     String id;
 
-    public workshop(Boolean present, String id) {
+    public workshop(String present, String id) {
         this.present = present;
         this.id = id;
     }
@@ -16,11 +16,11 @@ public class workshop {
     public workshop() {
     }
 
-    public Boolean getpresent() {
+    public String getpresent() {
         return present;
     }
 
-    public void setpresent(Boolean present) {
+    public void setpresent(String present) {
         this.present = present;
     }
 

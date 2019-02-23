@@ -21,9 +21,13 @@ import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class markAttendance extends AppCompatActivity {
@@ -38,8 +42,10 @@ public class markAttendance extends AppCompatActivity {
     TextView mobile;
     TextView workshopView;
     Button markAttendance;
+    Button markConferenceAtt;
     JSONObject jsonObject;
     ProgressDialog dialog;
+    String markAtt;
 
 
     @Override
@@ -60,6 +66,8 @@ public class markAttendance extends AppCompatActivity {
         workshopView = findViewById(R.id.workshops);
         detailWorkshop = new ArrayList<workshop>();
         markAttendance = findViewById(R.id.buttonMarkattendance);
+        markConferenceAtt = findViewById(R.id.buttonMarkattendanceConference);
+
         jsonObject  = new JSONObject();
         dialog = new ProgressDialog(this);
 
@@ -68,10 +76,18 @@ public class markAttendance extends AppCompatActivity {
         markAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                markAtt = "workshop";
                 attendanceMarkFn();
             }
         });
 
+        markConferenceAtt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                markAtt = "conference";
+                attendanceMarkFn();
+            }
+        });
         dialog.setMessage("Please Wait...");
         dialog.show();
 
@@ -96,6 +112,16 @@ public class markAttendance extends AppCompatActivity {
                     user Inspector = noteDataSnapshot.getValue(user.class);
 
                     if (Inspector.getCnic().equals(cnic.getText().toString())) {
+                        System.out.println("markakmrkmarkmk,,,,,"+markAtt);
+                        System.out.println("markakmrkmarkmk,,,,,"+Inspector.getConferenceAttendace());
+
+
+                        if (markAtt == "conference"){
+                            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                            Date date = new Date();
+                            databaseUsers.child(noteDataSnapshot.getKey()).child("conferenceAttendace").child(Integer.toString(Inspector.getConferenceAttendace().size())).setValue(dateFormat.format(date));
+                            return;
+                        }
 
                         System.out.println(Inspector+" is the inspectorr");
 
@@ -104,9 +130,15 @@ public class markAttendance extends AppCompatActivity {
                         System.out.println("database:"+database);
                         int i=0;
                         for (workshop w : database){
-                            if (w.getId().equals(spinner.getSelectedItem())){
-                                if (!w.getpresent()){
-                                    databaseUsers.child(noteDataSnapshot.getKey()).child("qr_code").child(Integer.toString(i)).child("present").setValue(true);
+
+                            if (w.getId().equals(spinner.getSelectedItem()) && markAtt == "workshop"){
+                                System.out.println("markakmrkmarkmk,,,,,"+markAtt);
+
+
+                                if (w.getpresent().equals("absent") ){
+                                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                                    Date date = new Date();
+                                    databaseUsers.child(noteDataSnapshot.getKey()).child("qr_code").child(Integer.toString(i)).child("present").setValue(dateFormat.format(date));
                                     Toast.makeText(markAttendance.this,"The attendance has been marked. ",Toast.LENGTH_LONG).show();
                                 } else {
                                     Toast.makeText(markAttendance.this,"The attendance is already marked. ",Toast.LENGTH_LONG).show();
@@ -116,6 +148,8 @@ public class markAttendance extends AppCompatActivity {
                                 startActivity(new Intent(markAttendance.this,MainActivity.class));
                                 return;
 
+                            } else {
+                                Toast.makeText(markAttendance.this,"This workshop selected is not right. try choosing another workshop.",Toast.LENGTH_LONG).show();
                             }
                             i++;
                         }

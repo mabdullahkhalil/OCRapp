@@ -14,19 +14,19 @@ public class user {
     String pass_type;
     String cnic;
     List<workshop> qr_code;
-    List<String> conferenceAttendance;
+    List<String> conferenceAttendace;
 
     public user() {
     }
 
-    public user(String first_name, String last_name, String phone, String pass_type, String cnic, List<workshop> qr_code, List<String> conferenceAttendance) {
+    public user(String first_name, String last_name, String phone, String pass_type, String cnic, List<workshop> qr_code, List<String> conferenceAttendace) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.phone = phone;
         this.pass_type = pass_type;
         this.cnic = cnic;
         this.qr_code = qr_code;
-        this.conferenceAttendance = conferenceAttendance;
+        this.conferenceAttendace = conferenceAttendace;
     }
 
     public String getFirst_name() {
@@ -77,11 +77,11 @@ public class user {
         this.qr_code = qr_code;
     }
 
-    public List<String> getConferenceAttendance() {
-        return conferenceAttendance;
+    public List<String> getConferenceAttendace() {
+        return conferenceAttendace;
     }
 
-    public void setConferenceAttendance(List<String> conferenceAttendance) {
-        this.conferenceAttendance = conferenceAttendance;
+    public void setConferenceAttendace(List<String> conferenceAttendace) {
+        this.conferenceAttendace = conferenceAttendace;
     }
 }
