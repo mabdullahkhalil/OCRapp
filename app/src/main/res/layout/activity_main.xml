@@ -5,80 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/back"
     android:theme="@style/AppTheme1"
     tools:context="com.something.mabdullahk.ocrapp.MainActivity">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="12dp"
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:layout_gravity="center"
-        android:background="@android:color/holo_green_dark"
-        android:layout_height="80dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="People Present"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:textSize="24dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="            24"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="8dp"
-            android:textSize="40dp"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="150dp"
+        android:src="@drawable/logo"/>
 
 
-    </LinearLayout>
+
+
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="12dp"
-        android:layout_gravity="center"
-        android:background="@android:color/holo_red_dark"
-        android:layout_height="80dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="People Absent"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:textSize="24dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="              4"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="8dp"
-            android:textSize="40dp"/>
-
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:id="@+id/scan"
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        android:text="Scan Barcode"/>
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/scan"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/btncolor1"
+            android:textColor="@android:color/white"
+            android:text="Scan Barcode"/>
+
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:id="@+id/showAttendents"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/btncolor2"
+            android:textColor="@android:color/white"
+            android:text="Show Attendants"/>
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

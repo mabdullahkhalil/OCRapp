@@ -120,6 +120,8 @@ public class markAttendance extends AppCompatActivity {
                             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                             Date date = new Date();
                             databaseUsers.child(noteDataSnapshot.getKey()).child("conferenceAttendace").child(Integer.toString(Inspector.getConferenceAttendace().size())).setValue(dateFormat.format(date));
+                            Toast.makeText(markAttendance.this,"The attendance for conference is marked.",Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(markAttendance.this,MainActivity.class));
                             return;
                         }
 
